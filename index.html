@@ -1,52 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>E-Commerce Shopping Cart</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Bootstrap 5 Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-<body>
-    <header>
-        <h1>E-Commerce Shopping Cart System</h1>
-    </header>
+<body class="bg-light">
 
-    <main>
-        <section id="productList" class="product-grid">
-        </section>
-
-        <div class="cart-actions">
-            <button id="showBillBtn">Show Cart</button>
-            <button id="clearBillBtn">Clear Cart</button>
+    <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container justify-content-center">
+            <h1 class="h5 h-sm-4 h-md-3 h-lg-2 text-white m-2">
+                Ecommerce Shopping Cart System
+            </h1>
         </div>
-    </main>
+    </nav>
 
-    <div id="billModal" class="modal hidden">
-        <div id="modalContent">
-            <span id="closeModal" class="close">&times;</span>
-            <h2>Your Bill</h2>
-            <table id="billTable">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
-
-                <tbody id="billBody">
-                </tbody>
-            </table>
-
-            <div class="bill-summary">
-                <p id="subtotal">Subtotal: 0</p>
-                <p id="tax">Tax (5%): 0</p>
-                <h3 id="grandTotal">Grand Total: 0</h3>
-            </div>
-            <button id="printBillBtn">Print Bill</button>
+    <div class="container">
+        <div class="row g-4" id="productList"></div>
+        <div class="text-center m-4">
+            <button class="btn btn-primary m-2" id="showCartBtn">Show Cart</button>
+            <button class="btn btn-outline-primary" id="clearCartBtn">Clear Cart</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Your Cart</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <table class="table table-bordered text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Item</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartBody"></tbody>
+                    </table>
+
+                    <div class="text-end">
+                        <p id="subtotal">Subtotal: 0</p>
+                        <p id="tax">Tax (5%): 0</p>
+                        <h5 class="text-primary" id="grandTotal">Grand Total: 0</h5>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="window.print()">Print</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
